@@ -1,0 +1,421 @@
+<!doctype html>
+<html><head><meta charset="utf-8">
+<style>
+@font-face{font-family:Plex;src:url(node_modules/@fontsource/ibm-plex-sans/files/ibm-plex-sans-latin-400-normal.woff2);font-weight:400}
+@font-face{font-family:Plex;src:url(node_modules/@fontsource/ibm-plex-sans/files/ibm-plex-sans-latin-500-normal.woff2);font-weight:500}
+@font-face{font-family:Plex;src:url(node_modules/@fontsource/ibm-plex-sans/files/ibm-plex-sans-latin-600-normal.woff2);font-weight:600}
+@font-face{font-family:Plex;src:url(node_modules/@fontsource/ibm-plex-sans/files/ibm-plex-sans-latin-700-normal.woff2);font-weight:700}
+@font-face{font-family:PlexAr;src:url(node_modules/@fontsource/ibm-plex-sans-arabic/files/ibm-plex-sans-arabic-arabic-400-normal.woff2);font-weight:400}
+@font-face{font-family:PlexAr;src:url(node_modules/@fontsource/ibm-plex-sans-arabic/files/ibm-plex-sans-arabic-arabic-500-normal.woff2);font-weight:500}
+@font-face{font-family:PlexAr;src:url(node_modules/@fontsource/ibm-plex-sans-arabic/files/ibm-plex-sans-arabic-arabic-600-normal.woff2);font-weight:600}
+@font-face{font-family:PlexAr;src:url(node_modules/@fontsource/ibm-plex-sans-arabic/files/ibm-plex-sans-arabic-arabic-700-normal.woff2);font-weight:700}
+@font-face{font-family:Fraunces;src:url(node_modules/@fontsource/fraunces/files/fraunces-latin-400-normal.woff2);font-weight:400}
+@font-face{font-family:Fraunces;src:url(node_modules/@fontsource/fraunces/files/fraunces-latin-600-normal.woff2);font-weight:600}
+:root{--bg:#F5F0E6;--card:#FFFDF8;--ink:#0F1F1E;--mut:#5D6866;--line:#E6DDCC;--g:#0B3B3C;--g2:#14605C;--g3:#E2EEEA;--gold:#B8914A;--gold2:#E9D8B0;--sand:#EDE3D0;
+--u:#B42318;--sp:#B4540A;--fe:#5B3FB8;--pr:#0E6A9C;--sc:#0F7A4E}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:#E7E0D3;font-family:Plex,PlexAr,sans-serif;color:var(--ink);padding:60px 68px 80px}
+svg.ic{width:20px;height:20px;stroke-width:1.75;flex:none}
+.s16 svg.ic,svg.ic.s16{width:16px;height:16px}
+.s24 svg.ic{width:24px;height:24px}
+.s28 svg.ic{width:28px;height:28px}
+.head{display:grid;grid-template-columns:1.1fr 1fr;gap:60px;margin-bottom:46px;align-items:end}
+.head h1{font-family:Fraunces;font-weight:600;font-size:52px;letter-spacing:-.025em;line-height:1.02}
+.eyebrow{font-weight:600;color:var(--g2);letter-spacing:.1em;text-transform:uppercase;font-size:13px;margin-bottom:12px}
+.head p{color:var(--mut);font-size:17px;line-height:1.55}
+.palette{display:flex;gap:10px;margin-top:18px}
+.palette span{display:flex;flex-direction:column;gap:6px;font-size:11.5px;color:var(--mut)}
+.palette i{width:62px;height:40px;border-radius:12px;display:block;border:1px solid rgba(0,0,0,.06)}
+.section{font-family:Fraunces;font-weight:600;font-size:26px;margin:10px 0 20px;display:flex;align-items:center;gap:14px}
+.section em{font-family:Plex;font-style:normal;font-size:13px;font-weight:600;background:var(--g);color:#F4E9D2;border-radius:99px;padding:4px 11px}
+.row{display:flex;gap:40px;margin-bottom:60px;align-items:flex-start;flex-wrap:nowrap}
+.cap{font-size:14.5px;color:var(--mut);margin-top:16px;max-width:390px;line-height:1.45}
+.cap b{color:var(--ink);font-weight:600;display:block;margin-bottom:3px;font-size:15.5px}
+.cap small{display:block;margin-top:5px;font-size:12.5px;color:var(--g2);font-weight:600}
+.phone{width:390px;height:844px;border-radius:50px;background:var(--bg);position:relative;overflow:hidden;box-shadow:0 0 0 11px #0c1514,0 0 0 12px #2a3534,0 34px 70px rgba(15,31,30,.28)}
+.sb{height:50px;display:flex;justify-content:space-between;align-items:center;padding:0 32px;font-size:15px;font-weight:600}
+.sb .r{display:flex;gap:6px;align-items:center}
+.pad{padding:6px 24px 0}
+.bar{display:flex;justify-content:space-between;align-items:center;padding:4px 22px 0;height:44px}
+.iconbtn{width:40px;height:40px;border-radius:14px;background:var(--card);border:1px solid var(--line);display:grid;place-items:center;color:var(--g)}
+.logo{display:flex;align-items:center;gap:10px;font-weight:700;font-size:18px}
+.logo small{display:block;font-weight:500;color:var(--mut);font-size:12px;line-height:1.1}
+.mark{width:36px;height:36px;border-radius:12px;background:var(--g);display:grid;place-items:center}
+.serif{font-family:Fraunces;font-weight:600;letter-spacing:-.02em}
+.btn{display:flex;align-items:center;justify-content:center;gap:10px;height:56px;border-radius:18px;background:var(--g);color:#F7EDD8;font-weight:600;font-size:16.5px}
+.btn.ghost{background:var(--card);color:var(--g);border:1px solid var(--line)}
+.btn.gold{background:var(--gold);color:#fff}
+.bottom{position:absolute;left:22px;right:22px;bottom:30px}
+.muted{color:var(--mut)}
+.chip{display:inline-flex;align-items:center;gap:7px;background:var(--card);border:1px solid var(--line);border-radius:99px;padding:8px 13px;font-size:13.5px;font-weight:500;white-space:nowrap;color:var(--ink)}
+.chip svg{color:var(--g2)}
+.card{background:var(--card);border:1px solid var(--line);border-radius:22px;padding:18px}
+.badge{display:inline-flex;align-items:center;gap:6px;font-size:12px;font-weight:600;border-radius:99px;padding:5px 10px}
+/* geometric pattern (8-point star lattice) */
+.pattern{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='56' height='56' viewBox='0 0 56 56'%3E%3Cg fill='none' stroke='%23B8914A' stroke-opacity='.28' stroke-width='1'%3E%3Cpath d='M28 6l6.5 15.5L50 28l-15.5 6.5L28 50l-6.5-15.5L6 28l15.5-6.5z'/%3E%3Crect x='14' y='14' width='28' height='28' transform='rotate(45 28 28)'/%3E%3Crect x='14' y='14' width='28' height='28'/%3E%3C/g%3E%3C/svg%3E")}
+.hero{margin:10px 18px 0;border-radius:30px;background:var(--g);color:#F7EDD8;padding:24px 22px;position:relative;overflow:hidden}
+.hero .pattern{position:absolute;inset:0;opacity:.9;-webkit-mask-image:linear-gradient(200deg,#000 0%,transparent 70%);mask-image:linear-gradient(200deg,#000 0%,transparent 70%)}
+.hero > *{position:relative}
+.hero h2{font-size:33px;line-height:1.06;margin:14px 0 10px}
+.hero .ar{font-family:PlexAr;font-weight:600;font-size:20px;color:var(--gold2);direction:rtl}
+.tagline{display:inline-flex;gap:7px;align-items:center;background:rgba(247,237,216,.12);border:1px solid rgba(247,237,216,.22);border-radius:99px;padding:6px 11px;font-size:12px;font-weight:600;letter-spacing:.03em}
+.intent{display:grid;grid-template-columns:1fr 1fr;gap:9px;margin:16px 18px 0}
+.intent div{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:13px;font-size:14px;font-weight:600;display:flex;flex-direction:column;gap:9px}
+.intent .ii{width:36px;height:36px;border-radius:12px;background:var(--g3);color:var(--g);display:grid;place-items:center}
+.trust{display:flex;gap:14px;justify-content:center;margin-top:14px;font-size:12px;color:var(--mut)}
+.trust span{display:flex;gap:5px;align-items:center}
+.trust svg{width:14px;height:14px;color:var(--g2)}
+.seg{display:flex;gap:5px;margin-top:6px}
+.seg span{flex:1;height:5px;border-radius:9px;background:#DCD2BF}
+.seg span.on{background:var(--g)}
+.qtitle{font-size:28px;line-height:1.14;margin:26px 0 8px}
+.why{display:flex;gap:10px;background:var(--g3);border-radius:16px;padding:12px 14px;font-size:14px;line-height:1.45;color:#1B3C3A;margin:14px 0 18px}
+.why svg{color:var(--g2);margin-top:1px}
+.opt{display:flex;align-items:center;gap:14px;background:var(--card);border:1.5px solid var(--line);border-radius:18px;padding:14px 16px;margin-bottom:10px;font-size:16px;font-weight:500}
+.opt .oi{width:38px;height:38px;border-radius:12px;background:var(--sand);display:grid;place-items:center;color:var(--g)}
+.opt .r{margin-left:auto;width:22px;height:22px;border-radius:50%;border:2px solid #CDC2AE}
+.opt.on{border-color:var(--g);background:#EFF5F2}
+.opt.on .r{border:7px solid var(--g)}
+.opt.on .oi{background:var(--g);color:#F7EDD8}
+.foot{display:flex;gap:8px;align-items:center;justify-content:center;font-size:12.5px;color:var(--mut);margin-top:12px}
+.foot svg{width:14px;height:14px}
+.langcard{display:flex;align-items:center;gap:14px;background:var(--card);border:1.5px solid var(--line);border-radius:22px;padding:18px;margin-bottom:12px}
+.langcard.on{border-color:var(--g);background:#EFF5F2}
+.langcard .big{font-size:24px;font-weight:700;width:52px;height:52px;border-radius:16px;background:var(--sand);display:grid;place-items:center;color:var(--g);font-family:PlexAr}
+.prom{display:flex;gap:12px;align-items:flex-start;padding:12px 0}
+.prom .pi{width:36px;height:36px;border-radius:12px;background:var(--g3);color:var(--g);display:grid;place-items:center;flex:none}
+.prom b{font-size:15px;display:block}.prom span{font-size:13px;color:var(--mut)}
+.urgent{background:linear-gradient(180deg,#FBE9E6 0%,var(--bg) 52%)}
+.sos{width:78px;height:78px;border-radius:26px;background:var(--u);display:grid;place-items:center;color:#fff;margin:22px 0 18px;box-shadow:0 14px 32px rgba(180,35,24,.35)}
+.lvl{border-radius:26px;padding:20px;color:#fff;position:relative;overflow:hidden}
+.lvl .pattern{position:absolute;inset:0;opacity:.6;filter:brightness(2.2);-webkit-mask-image:linear-gradient(240deg,#000,transparent 65%);mask-image:linear-gradient(240deg,#000,transparent 65%)}
+.lvl > *{position:relative}
+.ladder{display:flex;gap:4px;margin-top:14px}
+.ladder span{flex:1;height:7px;border-radius:9px;background:rgba(255,255,255,.26)}
+.ladder span.on{background:#fff}
+.plan{display:flex;gap:12px;align-items:center;padding:11px 0;border-bottom:1px solid var(--line)}
+.plan .n{width:28px;height:28px;border-radius:50%;border:1.5px solid var(--g);display:grid;place-items:center;font-size:13px;font-weight:700;color:var(--g);flex:none}
+.plan .n.done{background:var(--g);color:#fff}
+.plan b{font-size:14.5px}.plan small{display:block;color:var(--mut);font-size:12.5px}
+.sig{display:flex;gap:12px;align-items:center;background:var(--card);border:1px solid var(--line);border-radius:16px;padding:12px 13px;margin-bottom:8px}
+.sig .d{width:38px;height:38px;border-radius:12px;display:grid;place-items:center;flex:none}
+.sig b{font-size:14.5px;display:block;line-height:1.25}.sig small{font-size:12.5px;color:var(--mut)}
+.sig .chev{margin-left:auto;color:#ADA28C}
+.sheet{position:absolute;left:0;right:0;bottom:0;background:var(--card);border-radius:30px 30px 0 0;padding:12px 24px 32px;box-shadow:0 -20px 40px rgba(15,31,30,.2)}
+.grab{width:44px;height:5px;border-radius:9px;background:#D6CCBA;margin:0 auto 18px}
+.scrim{position:absolute;inset:0;background:rgba(15,31,30,.4)}
+.meter{height:10px;border-radius:9px;background:linear-gradient(90deg,#E7DEF7 0 52%,#D3EDDF 52% 100%);position:relative;margin:26px 0 8px}
+.meter i{position:absolute;top:-6px;width:4px;height:22px;border-radius:3px;background:var(--fe)}
+.meter em{position:absolute;top:-24px;font-style:normal;font-size:12px;font-weight:700;color:var(--fe);transform:translateX(-50%)}
+.src{display:flex;gap:10px;align-items:center;background:var(--sand);border-radius:14px;padding:12px;font-size:13px;margin-top:14px}
+.src svg{color:var(--g2)}
+.slot{border:1.5px solid var(--line);background:var(--card);border-radius:14px;padding:10px 0;text-align:center;font-size:14px;font-weight:600}
+.slot.on{background:var(--g);color:#F7EDD8;border-color:var(--g)}
+.slot small{display:block;font-size:11px;font-weight:500;opacity:.75}
+.doc{display:flex;gap:12px;align-items:center}
+.avatar{width:52px;height:52px;border-radius:16px;background:linear-gradient(135deg,#CFE2DC,#9DC1B8);display:grid;place-items:center;color:var(--g);font-weight:700}
+.toggle{width:46px;height:28px;border-radius:99px;background:var(--g);position:relative;flex:none}
+.toggle:after{content:"";position:absolute;right:3px;top:3px;width:22px;height:22px;border-radius:50%;background:#fff}
+.pin{font-weight:600;font-size:40px;letter-spacing:.14em;color:var(--g);text-align:center;direction:ltr}
+[dir=rtl]{font-family:PlexAr,Plex,sans-serif}
+[dir=rtl] .serif{font-family:PlexAr;font-weight:700;letter-spacing:0}
+[dir=rtl] .sig .chev{margin-left:0;margin-right:auto}
+[dir=rtl] .opt .r{margin-left:0;margin-right:auto}
+/* desktop */
+.desk{width:1440px;border-radius:22px;background:var(--bg);overflow:hidden;box-shadow:0 30px 70px rgba(15,31,30,.24)}
+.dnav{display:flex;align-items:center;justify-content:space-between;padding:22px 56px}
+.dnav nav{display:flex;gap:30px;font-size:15px;font-weight:500}
+.dhero{margin:0 28px;border-radius:34px;background:var(--g);color:#F7EDD8;padding:64px 64px 56px;position:relative;overflow:hidden;display:grid;grid-template-columns:1.15fr 1fr;gap:40px}
+.dhero .pattern{position:absolute;inset:0;-webkit-mask-image:linear-gradient(250deg,#000 0%,transparent 60%);mask-image:linear-gradient(250deg,#000 0%,transparent 60%)}
+.dhero > *{position:relative}
+.dhero h2{font-size:64px;line-height:1.02;margin:18px 0 16px}
+.steps{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;padding:52px 56px 20px}
+.steps .card{padding:22px}
+.steps .num{font-family:Fraunces;font-size:15px;font-weight:600;color:var(--gold)}
+.tstack{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;padding:12px 56px 56px}
+.tstack div{display:flex;gap:12px;align-items:center;font-size:14px;color:var(--mut)}
+.tstack b{display:block;color:var(--ink);font-size:15px}
+.tstack .pi{width:44px;height:44px;border-radius:14px;background:var(--g3);color:var(--g);display:grid;place-items:center;flex:none}
+.app{width:1440px;height:820px;border-radius:22px;background:#F2EEE6;overflow:hidden;box-shadow:0 30px 70px rgba(15,31,30,.24);display:flex}
+.side{width:252px;background:var(--g);color:#DDEAE6;padding:24px 16px;display:flex;flex-direction:column;gap:4px;position:relative;overflow:hidden}
+.side .pattern{position:absolute;inset:auto 0 0 0;height:260px;opacity:.7;-webkit-mask-image:linear-gradient(0deg,#000,transparent);mask-image:linear-gradient(0deg,#000,transparent)}
+.side > *{position:relative}
+.nv{padding:11px 12px;border-radius:12px;font-size:14.5px;display:flex;gap:11px;align-items:center;opacity:.8}
+.nv.on{background:rgba(255,255,255,.11);opacity:1;font-weight:600}
+.nv em{margin-left:auto;font-style:normal;background:var(--gold);color:#fff;font-weight:700;border-radius:99px;padding:1px 8px;font-size:12px}
+.main{flex:1;padding:26px 30px;display:grid;grid-template-columns:380px 1fr;gap:22px}
+.qitem{background:#fff;border:1px solid var(--line);border-radius:16px;padding:14px 15px;margin-bottom:10px;display:flex;gap:12px;align-items:center}
+.qitem.on{border:2px solid var(--g);box-shadow:0 8px 20px rgba(11,59,60,.12)}
+.lv{font-size:11.5px;font-weight:700;border-radius:8px;padding:4px 8px;color:#fff}
+.kv{display:grid;grid-template-columns:repeat(5,1fr);gap:10px;margin-top:14px}
+.kv div{background:#fff;border:1px solid var(--line);border-radius:14px;padding:11px 13px}
+.kv small{display:block;color:var(--mut);font-size:12px}.kv b{font-size:18px}
+.flag{font-size:11px;font-weight:700;color:var(--fe);background:#EFEAFB;border-radius:6px;padding:2px 6px;margin-left:6px}
+.decide{background:var(--sand);border-radius:18px;padding:16px;margin-top:14px}
+.seg2{display:flex;gap:6px;margin-top:10px}
+.seg2 span{flex:1;text-align:center;padding:10px 0;border-radius:12px;background:#fff;border:1px solid var(--line);font-size:12.5px;font-weight:600;white-space:nowrap}
+.seg2 span.on{background:var(--sp);color:#fff;border-color:var(--sp)}
+.trace{font-family:ui-monospace,monospace;font-size:12px;background:#0F1F1E;color:#BFE3D9;border-radius:12px;padding:12px 14px;line-height:1.65;margin-top:10px}
+.flow{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin:0 0 30px;font-size:14px;font-weight:600}
+.flow span{background:var(--card);border:1px solid var(--line);border-radius:99px;padding:8px 14px;display:flex;gap:8px;align-items:center}
+.flow span b{width:22px;height:22px;border-radius:50%;background:var(--g);color:#F7EDD8;display:grid;place-items:center;font-size:12px}
+.flow i{color:var(--gold)}
+</style></head><body>
+
+<div class="head">
+  <div><p class="eyebrow">Sanad · سند · UI direction v3</p>
+  <h1>Discreet, dignified, made for the Gulf</h1></div>
+  <div>
+    <p>Patterns borrowed from Manual (calm emerald, "no waiting rooms"), Ro and Legacy (a named journey shown up front, discreet by default), Headspace (intent chips), Fellow (lab-grade trust), Natural Cycles ("your data stays yours"), and Okadoc (booking, filters, certified security). Arabic-first choice, an 8-point star pattern, line icons instead of emojis.</p>
+    <div class="palette">
+      <span><i style="background:#0B3B3C"></i>Emerald</span><span><i style="background:#14605C"></i>Teal</span><span><i style="background:#B8914A"></i>Gold</span><span><i style="background:#F5F0E6"></i>Sand</span><span><i style="background:#E2EEEA"></i>Mint</span><span><i style="background:#0F1F1E"></i>Ink</span>
+    </div>
+  </div>
+</div>
+
+<div class="flow">
+  <span><b>1</b>Choose language</span><i>{{arrow-right}}</i><span><b>2</b>Why you're here</span><i>{{arrow-right}}</i><span><b>3</b>Safety check</span><i>{{arrow-right}}</i><span><b>4</b>Private questions</span><i>{{arrow-right}}</i><span><b>5</b>Your next step</span><i>{{arrow-right}}</i><span><b>6</b>Book or share</span><i>{{arrow-right}}</i><span><b>7</b>Doctor reviews</span>
+</div>
+
+<p class="section">Public website <em>Desktop</em></p>
+<div class="row"><div><div class="desk" id="w1">
+  <div class="dnav">
+    <div class="logo"><div class="mark">{{logo}}</div><div>Sanad<small>سند</small></div></div>
+    <nav><span>How it works</span><span>Privacy</span><span>For clinicians</span><span>Evidence</span></nav>
+    <div style="display:flex;gap:10px;align-items:center"><span class="chip">{{languages}} العربية</span><div class="btn" style="height:46px;padding:0 20px;font-size:15px">Start private check</div></div>
+  </div>
+  <div class="dhero"><div class="pattern"></div>
+    <div>
+      <span class="tagline">{{lock}} NO NAME · NO EMIRATES ID · NO WAITING ROOM</span>
+      <h2 class="serif">Men's reproductive health, privately.</h2>
+      <p class="ar" style="font-family:PlexAr;font-size:26px;font-weight:600;color:var(--gold2);direction:rtl;text-align:left">صحتك الإنجابية، بخصوصية تامة</p>
+      <p style="font-size:18px;opacity:.85;margin-top:16px;max-width:520px;line-height:1.55">A 4-minute check that explains what matters, why, and the right next step, in Arabic or English. Nothing leaves your phone unless you choose.</p>
+      <div style="display:flex;gap:12px;margin-top:28px"><div class="btn gold" style="padding:0 26px">Start private check {{arrow-right}}</div><div class="btn" style="background:rgba(247,237,216,.1);border:1px solid rgba(247,237,216,.3);padding:0 22px">How it works</div></div>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:12px;justify-content:center">
+      <p style="font-size:14px;opacity:.8;font-weight:600;letter-spacing:.06em">WHAT BRINGS YOU HERE?</p>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px">
+        <div class="card" style="background:rgba(255,253,248,.96);color:var(--ink)"><div class="opt oi" style="all:unset"></div><span class="s24" style="color:var(--g)">{{baby}}</span><b style="display:block;margin-top:10px;font-size:16px">We're trying to conceive</b><small class="muted">Check together, early</small></div>
+        <div class="card" style="background:rgba(255,253,248,.96);color:var(--ink)"><span class="s24" style="color:var(--g)">{{calendar-heart}}</span><b style="display:block;margin-top:10px;font-size:16px">Planning marriage or family</b><small class="muted">Preconception check</small></div>
+        <div class="card" style="background:rgba(255,253,248,.96);color:var(--ink)"><span class="s24" style="color:var(--g)">{{heart-pulse}}</span><b style="display:block;margin-top:10px;font-size:16px">A general health check</b><small class="muted">Hormones, weight, sugar</small></div>
+        <div class="card" style="background:rgba(255,253,248,.96);color:var(--ink)"><span class="s24" style="color:var(--g)">{{circle-help}}</span><b style="display:block;margin-top:10px;font-size:16px">A specific concern</b><small class="muted">Ask privately</small></div>
+      </div>
+    </div>
+  </div>
+  <div class="steps">
+    <div class="card"><span class="num">01</span><h3 class="serif" style="font-size:21px;margin:8px 0 6px">Answer privately</h3><p class="muted" style="font-size:14.5px;line-height:1.5">One question at a time. Skip anything. Stays on your phone.</p></div>
+    <div class="card"><span class="num">02</span><h3 class="serif" style="font-size:21px;margin:8px 0 6px">See what matters</h3><p class="muted" style="font-size:14.5px;line-height:1.5">Every signal explained, with the medical guideline behind it.</p></div>
+    <div class="card"><span class="num">03</span><h3 class="serif" style="font-size:21px;margin:8px 0 6px">Get one next step</h3><p class="muted" style="font-size:14.5px;line-height:1.5">Self-care, GP, fertility clinic, specialist, or urgent care.</p></div>
+    <div class="card"><span class="num">04</span><h3 class="serif" style="font-size:21px;margin:8px 0 6px">Book or share</h3><p class="muted" style="font-size:14.5px;line-height:1.5">Teleconsult, male doctor, Arabic-speaking. You choose what they see.</p></div>
+  </div>
+  <div class="tstack">
+    <div><span class="pi">{{shield-check}}</span><span><b>Encrypted on your phone</b>AES-256, nothing on a server</span></div>
+    <div><span class="pi">{{book-open-check}}</span><span><b>Built on guidelines</b>WHO 2021 · AUA/ASRM · EAU</span></div>
+    <div><span class="pi">{{stethoscope}}</span><span><b>Doctors decide</b>Clinician review for every referral</span></div>
+    <div><span class="pi">{{badge-check}}</span><span><b>Designed for UAE law</b>PDPL · health data stays in-country</span></div>
+  </div>
+</div><div class="cap" style="max-width:900px"><b>W1 · Landing page</b>Manual-style emerald hero with an Arabic subtitle, Headspace-style intent cards, a Ro-style four-step journey and an Okadoc/Fellow-style trust stack.<small>Inspired by Manual · Ro · Headspace · Okadoc</small></div></div></div>
+
+<p class="section">App flow <em>Mobile</em></p>
+<div class="row">
+<!-- M1 language -->
+<div><div class="phone" id="m1">
+  <div class="sb"><span>9:41</span><span class="r s16">{{signal}}{{wifi}}{{battery-full}}</span></div>
+  <div class="pad" style="padding-top:30px">
+    <div class="mark" style="width:60px;height:60px;border-radius:20px">{{logo}}</div>
+    <h2 class="serif" style="font-size:34px;line-height:1.08;margin-top:22px">Choose your language</h2>
+    <p style="font-family:PlexAr;font-size:22px;font-weight:600;color:var(--g2);margin-top:6px;direction:rtl;text-align:left">اختر لغتك</p>
+    <div style="margin-top:28px">
+      <div class="langcard on"><span class="big">ع</span><div><b style="font-size:18px;font-family:PlexAr">العربية</b><div class="muted" style="font-size:13px">Arabic · right to left</div></div><span style="margin-left:auto;color:var(--g)" class="s24">{{circle-check}}</span></div>
+      <div class="langcard"><span class="big" style="font-family:Plex">En</span><div><b style="font-size:18px">English</b><div class="muted" style="font-size:13px">You can switch any time</div></div></div>
+    </div>
+    <div class="card" style="margin-top:12px;background:var(--g3);border:none">
+      <div class="prom" style="padding:4px 0"><span class="pi" style="background:#fff">{{eye-off}}</span><div><b>No name. No Emirates ID.</b><span>We never ask who you are.</span></div></div>
+      <div class="prom" style="padding:8px 0 4px"><span class="pi" style="background:#fff">{{server-off}}</span><div><b>Your data stays yours</b><span>Answers live on this phone only.</span></div></div>
+    </div>
+  </div>
+  <div class="bottom"><div class="btn">متابعة · Continue</div></div>
+</div><div class="cap"><b>M1 · Language first</b>Arabic is offered first, as an equal. Privacy promises appear before any question.<small>Natural Cycles · Okadoc</small></div></div>
+
+<!-- M2 intent -->
+<div><div class="phone" id="m2">
+  <div class="sb"><span>9:41</span><span class="r s16">{{signal}}{{wifi}}{{battery-full}}</span></div>
+  <div class="bar"><span class="iconbtn">{{chevron-left}}</span><div class="logo" style="font-size:16px"><div class="mark" style="width:30px;height:30px;border-radius:10px">{{logo}}</div>Sanad</div><span class="iconbtn">{{languages}}</span></div>
+  <div class="pad">
+    <h2 class="serif qtitle" style="margin-top:20px">What brings you here today?</h2>
+    <p class="muted" style="font-size:15px;line-height:1.45">Pick one. No judgement, and no assumptions about your family plans.</p>
+    <div style="margin-top:20px">
+      <div class="opt on"><span class="oi">{{baby}}</span>We're trying to conceive<span class="r"></span></div>
+      <div class="opt"><span class="oi">{{calendar-heart}}</span>Planning marriage or a family<span class="r"></span></div>
+      <div class="opt"><span class="oi">{{heart-pulse}}</span>A general health check<span class="r"></span></div>
+      <div class="opt"><span class="oi">{{circle-help}}</span>A specific concern<span class="r"></span></div>
+      <div class="opt"><span class="oi">{{eye-off}}</span>Prefer not to say<span class="r"></span></div>
+    </div>
+  </div>
+  <div class="bottom"><div class="btn">Continue {{arrow-right}}</div><div class="foot">{{clock}} About 4 minutes · 9 short sections</div></div>
+</div><div class="cap"><b>M2 · Intent</b>Plain choices let the app tailor itself without labelling anyone.<small>Headspace · Legacy</small></div></div>
+
+<!-- M3 question -->
+<div><div class="phone" id="m3">
+  <div class="sb"><span>9:41</span><span class="r s16">{{signal}}{{wifi}}{{battery-full}}</span></div>
+  <div class="bar"><span class="iconbtn">{{chevron-left}}</span><span class="muted" style="font-size:13.5px;font-weight:600">Medicines &amp; lifestyle · 6/9</span><span style="color:var(--g);font-weight:600;font-size:15px">Skip</span></div>
+  <div class="pad">
+    <div class="seg"><span class="on"></span><span class="on"></span><span class="on"></span><span class="on"></span><span class="on"></span><span class="on"></span><span></span><span></span><span></span></div>
+    <h2 class="serif qtitle">Do you use testosterone or "gym" hormones?</h2>
+    <div class="why">{{info}}<span>Common and nothing to be ashamed of. We ask because it can switch off sperm production, and that is usually reversible.</span></div>
+    <div class="opt"><span class="oi">{{ban}}</span>Never<span class="r"></span></div>
+    <div class="opt"><span class="oi">{{history}}</span>In the past<span class="r"></span></div>
+    <div class="opt on"><span class="oi">{{syringe}}</span>Currently<span class="r"></span></div>
+    <div class="opt"><span class="oi">{{eye-off}}</span>Prefer not to say<span class="r"></span></div>
+  </div>
+  <div class="bottom"><div class="btn">Next</div><div class="foot">{{lock}} Only on this phone. Not saved anywhere.</div></div>
+</div><div class="cap"><b>M3 · One question per screen</b>Icon-led options, a "why we ask" panel that names the awkward bit and moves on, Skip always visible.<small>Manual · Legacy</small></div></div>
+
+<!-- M4 urgent -->
+<div><div class="phone urgent" id="m4">
+  <div class="sb"><span>9:41</span><span class="r s16">{{signal}}{{wifi}}{{battery-full}}</span></div>
+  <div class="pad">
+    <div class="sos s28">{{siren}}</div>
+    <h2 class="serif" style="font-size:33px;line-height:1.08;color:var(--u)">Please get help now</h2>
+    <p style="font-size:16.5px;line-height:1.5;margin-top:14px">Sudden testicular pain can be <b>torsion</b>. It can often be treated successfully within about <b>6 hours</b>.</p>
+    <div class="card" style="margin-top:20px;border-color:#F1C8C2;display:flex;gap:12px"><span style="color:var(--u)">{{map-pin}}</span><div><b style="font-size:15px">Nearest emergency departments</b><p class="muted" style="font-size:14px;margin-top:4px">Sheikh Khalifa Medical City · 2.1 km<br>Cleveland Clinic Abu Dhabi · 4.8 km</p></div></div>
+    <p class="muted" style="font-size:12.5px;margin-top:14px;line-height:1.45;display:flex;gap:6px">{{info}} Shown by a fixed safety rule, not a prediction.</p>
+  </div>
+  <div class="bottom">
+    <div class="btn" style="background:var(--u);color:#fff">{{phone-call}} Call 998 ambulance</div>
+    <div class="btn ghost" style="margin-top:10px;height:50px;font-size:15px">{{navigation}} Directions</div>
+    <p style="text-align:center;font-size:13.5px;margin-top:12px;color:var(--mut)">I'm safe, continue the check</p>
+  </div>
+</div><div class="cap"><b>M4 · Safety stop</b>Red flags interrupt with one action. Emergency guidance stated plainly, as Manual does.<small>Manual</small></div></div>
+</div>
+
+<div class="row">
+<!-- M5 result -->
+<div><div class="phone" id="m5">
+  <div class="sb"><span>9:41</span><span class="r s16">{{signal}}{{wifi}}{{battery-full}}</span></div>
+  <div class="bar"><span class="iconbtn">{{x}}</span><span class="muted" style="font-size:13.5px;font-weight:600">Your result</span><span class="iconbtn">{{share-2}}</span></div>
+  <div class="pad" style="padding-top:10px">
+    <div class="lvl" style="background:linear-gradient(140deg,#C1640F,#86400A)"><div class="pattern"></div>
+      <span class="badge" style="background:rgba(255,255,255,.16)">{{stethoscope}} YOUR NEXT STEP</span>
+      <h2 class="serif" style="font-size:26px;line-height:1.12;margin-top:12px">See a urologist or andrologist</h2>
+      <p style="opacity:.9;font-size:14px;margin-top:6px;display:flex;gap:6px;align-items:center">{{clock}} Within 2–4 weeks</p>
+      <div class="ladder"><span></span><span></span><span></span><span class="on"></span><span></span></div>
+    </div>
+    <p style="font-size:13px;font-weight:700;letter-spacing:.06em;color:var(--g2);margin:18px 0 4px">YOUR PLAN</p>
+    <div class="plan"><span class="n done">{{check}}</span><div><b>Private check complete</b><small>7 signals found · 100% answered</small></div></div>
+    <div class="plan"><span class="n">2</span><div><b>Book a specialist teleconsult</b><small>Male doctor · Arabic-speaking</small></div><span style="margin-left:auto;color:var(--g)">{{chevron-right}}</span></div>
+    <div class="plan"><span class="n">3</span><div><b>Repeat semen analysis</b><small>In 2–3 months · home collection</small></div><span style="margin-left:auto;color:var(--g)">{{chevron-right}}</span></div>
+    <div class="plan" style="border:none"><span class="n">4</span><div><b>HbA1c blood test at your GP</b><small>Sugar has never been checked</small></div><span style="margin-left:auto;color:var(--g)">{{chevron-right}}</span></div>
+  </div>
+  <div class="bottom" style="bottom:26px"><div class="btn">{{calendar}} Book teleconsult</div><div class="foot">{{file-text}} See all 7 signals and why they matter</div></div>
+</div><div class="cap"><b>M5 · Result as a plan</b>The next step is the hero, followed by a numbered plan, like Legacy's dashboard and Manual's monitoring schedule.<small>Legacy · Manual · Ro</small></div></div>
+
+<!-- M6 signal -->
+<div><div class="phone" id="m6">
+  <div class="sb"><span>9:41</span><span class="r s16">{{signal}}{{wifi}}{{battery-full}}</span></div>
+  <div class="pad" style="padding-top:2px">
+    <p style="font-size:13px;font-weight:700;letter-spacing:.06em;color:var(--g2);margin:14px 0 10px">THINGS YOU CAN CHANGE</p>
+    <div class="sig"><span class="d" style="background:#EFEAFB;color:var(--fe)">{{flask-conical}}</span><div><b>Semen values below WHO reference</b><small>Fertility · repeat in 2–3 months</small></div><span class="chev">{{chevron-right}}</span></div>
+    <div class="sig"><span class="d" style="background:#E3EFF6;color:var(--pr)">{{scale}}</span><div><b>Weight in the obesity range</b><small>5–10% loss helps hormones</small></div><span class="chev">{{chevron-right}}</span></div>
+  </div>
+  <div class="scrim"></div>
+  <div class="sheet">
+    <div class="grab"></div>
+    <span class="badge" style="background:#EFEAFB;color:var(--fe)">{{flask-conical}} Fertility · you can change this</span>
+    <h3 class="serif" style="font-size:24px;line-height:1.15;margin-top:14px">Semen values below the WHO reference</h3>
+    <p class="muted" style="font-size:13px;margin-top:16px">Concentration (million/mL)</p>
+    <div class="meter"><i style="left:38%"></i><em style="left:38%">You · 12</em></div>
+    <div style="display:flex;justify-content:space-between;font-size:12px" class="muted"><span>0</span><span style="margin-left:14%">Reference 16+</span><span>40+</span></div>
+    <p style="font-size:15px;line-height:1.55;margin-top:18px">One test is not a diagnosis: values vary a lot. Repeat in 2–3 months and review it at a fertility clinic. Weight, smoking and heat changes can improve this.</p>
+    <div class="src">{{book-open-check}}<span><b>Source</b> · WHO Laboratory Manual, 6th ed. (2021)</span></div>
+    <div class="btn" style="margin-top:16px">Got it</div>
+  </div>
+</div><div class="cap"><b>M6 · Explain any signal</b>Your own number against the reference range, plain words, and the source, in the same way Fellow and Function present lab results.<small>Fellow · Natural Cycles</small></div></div>
+
+<!-- M7 booking -->
+<div><div class="phone" id="m7">
+  <div class="sb"><span>9:41</span><span class="r s16">{{signal}}{{wifi}}{{battery-full}}</span></div>
+  <div class="bar"><span class="iconbtn">{{chevron-left}}</span><span class="muted" style="font-size:13.5px;font-weight:600">Book a specialist</span><span class="iconbtn">{{sliders-horizontal}}</span></div>
+  <div class="pad" style="padding-top:8px">
+    <div style="display:flex;gap:8px;flex-wrap:wrap"><span class="chip" style="background:var(--g);color:#F7EDD8;border-color:var(--g)">{{video}} Teleconsult</span><span class="chip">{{user-round}} Male doctor</span><span class="chip">{{languages}} Arabic</span></div>
+    <div class="card" style="margin-top:14px">
+      <div class="doc"><span class="avatar">{{stethoscope}}</span><div><b style="font-size:15.5px">Urology &amp; andrology</b><div class="muted" style="font-size:13px">DoH-licensed partner clinic · Abu Dhabi</div><div style="font-size:12.5px;color:var(--g2);font-weight:600;margin-top:3px;display:flex;gap:5px;align-items:center">{{badge-check}} Male · العربية · English</div></div></div>
+      <p style="font-size:13px;font-weight:600;margin:16px 0 8px;display:flex;justify-content:space-between">Thu 19 Nov <span class="muted" style="font-weight:500">Evening slots after Maghrib</span></p>
+      <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:8px">
+        <div class="slot">5:30<small>pm</small></div><div class="slot on">6:45<small>pm</small></div><div class="slot">8:00<small>pm</small></div><div class="slot">9:15<small>pm</small></div>
+      </div>
+    </div>
+    <div class="card" style="margin-top:12px;display:flex;gap:12px;align-items:center">
+      <span style="color:var(--g)" class="s24">{{shield-check}}</span><div style="flex:1"><b style="font-size:14.5px">Share my Sanad summary</b><div class="muted" style="font-size:12.5px">Encrypted · you choose the items</div></div><span class="toggle"></span></div>
+    <div class="foot" style="justify-content:flex-start;margin-top:12px">{{eye-off}} Appears as "Clinic appointment" in your calendar</div>
+  </div>
+  <div class="bottom"><div class="btn">Confirm 6:45 pm {{arrow-right}}</div></div>
+</div><div class="cap"><b>M7 · Book with preferences</b>Okadoc-style booking with filters that matter here (male doctor, Arabic, evening slots), and a discreet calendar label.<small>Okadoc · Hims · Legacy</small></div></div>
+
+<!-- M8 arabic result -->
+<div><div class="phone" id="m8" dir="rtl">
+  <div class="sb" dir="ltr"><span>9:41</span><span class="r s16">{{signal}}{{wifi}}{{battery-full}}</span></div>
+  <div class="bar"><span class="iconbtn">{{x}}</span><span class="muted" style="font-size:14px;font-weight:600">نتيجتك</span><span class="iconbtn">{{share-2}}</span></div>
+  <div class="pad" style="padding-top:10px">
+    <div class="lvl" style="background:linear-gradient(140deg,#6A4CC9,#432A9C)"><div class="pattern"></div>
+      <span class="badge" style="background:rgba(255,255,255,.16)">{{users-round}} خطوتك التالية</span>
+      <h2 class="serif" style="font-size:27px;line-height:1.3;margin-top:10px">تقييم الخصوبة للزوجين</h2>
+      <p style="opacity:.9;font-size:14.5px;margin-top:4px">خلال ١–٢ شهر · لكما معاً، وليس واحداً تلو الآخر</p>
+      <div class="ladder"><span></span><span></span><span class="on"></span><span></span><span></span></div>
+    </div>
+    <p style="font-size:14px;font-weight:700;color:var(--g2);margin:18px 0 10px">أمور يمكنك تغييرها</p>
+    <div class="sig"><span class="d" style="background:#E2F1E9;color:var(--sc)">{{thermometer-sun}}</span><div><b>تعرض متكرر للحرارة</b><small>العمل في الطقس الحار · استراحات في الظل</small></div><span class="chev">{{chevron-left}}</span></div>
+    <div class="sig"><span class="d" style="background:#E2F1E9;color:var(--sc)">{{cigarette}}</span><div><b>التدخين أو الشيشة أو المدواخ</b><small>الدعم المجاني يضاعف فرص الإقلاع</small></div><span class="chev">{{chevron-left}}</span></div>
+    <div class="sig"><span class="d" style="background:#E3EFF6;color:var(--pr)">{{scale}}</span><div><b>وزن أعلى قليلاً من الصحي</b><small>النشاط والغذاء يدعمان الهرمونات</small></div><span class="chev">{{chevron-left}}</span></div>
+  </div>
+  <div class="bottom" style="bottom:26px"><div class="btn">{{calendar}} احجز موعداً للزوجين</div><div class="foot">{{lock}} على هاتفك فقط · لا يُحفظ على أي خادم</div></div>
+</div><div class="cap"><b>M8 · Arabic, natively</b>Full right-to-left layout in IBM Plex Sans Arabic, with mirrored chevrons and locally relevant signals (shisha, midwakh, outdoor heat).<small>Bilingual parity, which none of the 9 sites show</small></div></div>
+</div>
+
+<p class="section">Clinician workspace <em>Desktop</em></p>
+<div><div class="app" id="c1">
+  <div class="side"><div class="pattern"></div>
+    <div class="logo" style="color:#fff;margin-bottom:22px"><div class="mark" style="background:#155B57">{{logo}}</div><div>Sanad<small style="color:#9FC1BB">Clinician</small></div></div>
+    <div class="nv on">{{inbox}} Shared packs <em>4</em></div>
+    <div class="nv">{{scroll-text}} Audit log</div>
+    <div class="nv">{{chart-column}} Service metrics</div>
+    <div class="nv">{{book-open-check}} Rules &amp; sources</div>
+    <div class="nv">{{settings}} Settings</div>
+    <div style="margin-top:auto;font-size:12.5px;opacity:.75;line-height:1.55;display:flex;gap:8px">{{shield-check}}<span>Packs decrypt in this browser only<br>Engine sanad-rules-1.3.0</span></div>
+  </div>
+  <div class="main">
+    <div>
+      <h2 class="serif" style="font-size:26px">Shared packs</h2>
+      <p class="muted" style="font-size:14px;margin:2px 0 16px">Opened with the patient's PIN · sorted by urgency</p>
+      <div class="qitem on"><span class="lv" style="background:var(--sp)">Specialist</span><div><b style="font-size:14.5px">38 y · trying 9 months</b><div class="muted" style="font-size:12.5px">Varicocele · low motility · BMI 31.7</div></div><span class="muted" style="margin-left:auto;font-size:12px">2m</span></div>
+      <div class="qitem"><span class="lv" style="background:var(--pr)">Primary</span><div><b style="font-size:14.5px">47 y · general check</b><div class="muted" style="font-size:12.5px">Frequent ED · glucose never tested</div></div><span class="muted" style="margin-left:auto;font-size:12px">1h</span></div>
+      <div class="qitem"><span class="lv" style="background:var(--fe)">Fertility</span><div><b style="font-size:14.5px">31 y · trying 14 months</b><div class="muted" style="font-size:12.5px">No other signals</div></div><span class="muted" style="margin-left:auto;font-size:12px">3h</span></div>
+      <div class="qitem"><span class="lv" style="background:var(--sc)">Self-care</span><div><b style="font-size:14.5px">30 y · planning</b><div class="muted" style="font-size:12.5px">Shisha · long driving</div></div><span class="muted" style="margin-left:auto;font-size:12px">1d</span></div>
+      <div class="card" style="margin-top:14px;display:flex;gap:12px;align-items:center"><span class="iconbtn" style="background:var(--g3);border:none">{{qr-code}}</span><div style="font-size:14px"><b>Open a new pack</b><div class="muted">Scan the QR or paste the link, then enter the PIN</div></div></div>
+    </div>
+    <div class="card" style="border-top:6px solid var(--sp);padding:20px 22px;align-self:start">
+      <div style="display:flex;justify-content:space-between;gap:16px;align-items:flex-start">
+        <div><p class="muted" style="font-size:12px;font-weight:700;letter-spacing:.08em">SANAD SUGGESTS</p><h2 class="serif" style="font-size:27px;color:var(--sp);margin-top:4px">Urology / andrology <span style="white-space:nowrap">within 2–4 weeks</span></h2></div>
+        <div style="display:flex;gap:6px;flex-wrap:wrap;justify-content:flex-end;max-width:330px"><span class="chip">{{video}} Teleconsult</span><span class="chip">{{user-round}} Male doctor</span><span class="chip">{{languages}} Arabic</span></div>
+      </div>
+      <div class="kv"><div><small>Age</small><b>38</b></div><div><small>BMI</small><b>31.7</b><span class="flag">≥30</span></div><div><small>Trying</small><b>9 mo</b></div><div><small>Sperm conc.</small><b>12</b><span class="flag">&lt;16</span></div><div><small>Prog. motility</small><b>28%</b><span class="flag">&lt;30</span></div></div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:16px">
+        <div><b style="font-size:14.5px">Signals</b>
+          <div class="sig" style="margin-top:8px"><span class="d" style="background:#FBEDE0;color:var(--sp)">{{activity}}</span><div><b>Possible varicocele</b><small>EAU SRH 2024 · HX-VARICOCELE</small></div></div>
+          <div class="sig"><span class="d" style="background:#EFEAFB;color:var(--fe)">{{flask-conical}}</span><div><b>Semen values below WHO reference</b><small>WHO 2021 · SA-LOW</small></div></div>
+          <div class="sig"><span class="d" style="background:#EFEAFB;color:var(--fe)">{{calendar-clock}}</span><div><b>6+ months, partner 35+</b><small>ASRM 2023 · TM-6-35</small></div></div>
+        </div>
+        <div><b style="font-size:14.5px">Reasoning trace</b>
+          <div class="trace">engine  sanad-rules-1.3.0<br>fired   TM-6-35        → fertility<br>        HX-VARICOCELE  → specialist<br>        SA-LOW         → fertility<br>        MB-OBESE MB-DM → primary<br>result  max(level) = specialist</div>
+          <div class="decide"><b style="font-size:14.5px">Your decision</b>
+            <div class="seg2"><span>Self-care</span><span>GP</span><span>Fertility</span><span class="on">Specialist</span><span>Urgent</span></div>
+            <div style="background:#fff;border:1px solid var(--line);border-radius:12px;padding:10px 12px;margin-top:10px;font-size:13.5px" class="muted">Reason (required to override)…</div>
+            <div style="display:flex;gap:10px;margin-top:10px"><div class="btn" style="flex:1;height:46px;font-size:14.5px">{{check}} Agree &amp; refer</div><div class="btn ghost" style="flex:1;height:46px;font-size:14.5px">{{video}} Start teleconsult</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div><div class="cap" style="max-width:900px"><b>C1 · Clinician workspace</b>A triage queue sorted by urgency, values flagged against references, the rule trace, and a one-row decision with a required reason for overrides. Preferences travel with the pack.<small>Okadoc (provider side) · Ro "backed by experts"</small></div></div>
+
+</body></html>
