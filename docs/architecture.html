@@ -1,0 +1,42 @@
+<!doctype html>
+<html><head><meta charset="utf-8"><style>
+body{margin:0;font-family:Inter,sans-serif;background:#fff;color:#14232b}
+.wrap{width:1600px;height:680px;position:relative;padding:28px 34px;box-sizing:border-box}
+.lane{position:absolute;border-radius:22px;padding:16px 18px;box-sizing:border-box}
+.lane h4{margin:0 0 10px;font-size:17px;letter-spacing:.08em;text-transform:uppercase;color:#1d5c5c}
+.box{background:#fff;border:2px solid #0f3d3e;border-radius:14px;padding:10px 14px;margin-bottom:10px;font-size:18px;line-height:1.3}
+.box b{display:block;font-size:19px}
+.box small{color:#5b6b73;font-size:15px}
+.gold{border-color:#c8a96a;background:#fffaf0}
+.red{border-color:#b42318;background:#fff5f4}
+.arrow{position:absolute;font-size:44px;color:#c8a96a;font-weight:700}
+.tag{display:inline-block;background:#0f3d3e;color:#fff8ea;border-radius:99px;padding:3px 10px;font-size:14px;margin:2px 4px 0 0}
+.foot{position:absolute;left:34px;right:34px;bottom:20px;font-size:16px;color:#5b6b73;display:flex;gap:26px}
+.lv{display:flex;gap:6px;margin-top:6px}.lv span{flex:1;text-align:center;color:#fff;border-radius:8px;padding:5px 0;font-size:14px;font-weight:600}
+</style></head><body><div class="wrap">
+<div class="lane" style="left:34px;top:28px;width:470px;height:560px;background:#f6f1e7">
+  <h4>1 · On the man's phone (no account)</h4>
+  <div class="box gold"><b>Granular consent</b><small>guidance (required) · share pack (optional) · anonymous tally (opt-in)</small></div>
+  <div class="box red"><b>Safety screen first</b><small>torsion · infection · priapism · lump → emergency / 2-week path</small></div>
+  <div class="box"><b>Bilingual private intake (EN / العربية)</b><small>history · sexual health · metabolic · infection · medicines & heat · semen & hormone results · care preferences. Every question skippable. No name, ID, nationality, religion or marital status.</small></div>
+  <div class="box"><b>Session storage only</b><small>answers vanish when the tab closes · "Delete my data" on every page</small></div>
+</div>
+<div class="arrow" style="left:512px;top:270px">→</div>
+<div class="lane" style="left:556px;top:28px;width:470px;height:560px;background:#eef4f3">
+  <h4>2 · Explainable engine (on device)</h4>
+  <div class="box"><b>Versioned rules: sanad-rules-1.3.0</b><small>33 rules from WHO 2021, AUA/ASRM 2020-24, EAU SRH 2024, NICE NG12. Each rule = id, level, plain-language why, source.</small></div>
+  <div class="box red"><b>Fail-safe logic</b><small>highest level wins · "not sure" on a red flag is never "no" · unknown partner age treated as 35+</small></div>
+  <div class="box"><b>Output</b><small>next step + timeframe · signals split into "you can change" vs "discuss" · completeness score · rule trace</small>
+    <div class="lv"><span style="background:#067647">Self-care</span><span style="background:#026aa2">Primary</span><span style="background:#6941c6">Fertility</span><span style="background:#b54708">Uro/Andro</span><span style="background:#b42318">Urgent</span></div></div>
+  <div class="box gold"><b>Evaluation harness</b><small>48 vignettes · confusion matrix · fairness by group/age/language · missing-answer robustness · 8 automated tests</small></div>
+</div>
+<div class="arrow" style="left:1034px;top:270px">→</div>
+<div class="lane" style="left:1078px;top:28px;width:490px;height:560px;background:#f3f0fa">
+  <h4>3 · User-controlled hand-off</h4>
+  <div class="box gold"><b>Encrypted share pack</b><small>user ticks what to include → deflate → AES-256-GCM, key = PBKDF2-SHA256(6-digit PIN, 210k) → link fragment (#…) + QR. Never sent to or stored on a server. Expires 24 h / 7 d.</small></div>
+  <div class="box"><b>Clinician workspace (human oversight)</b><small>open with PIN · see signals, sources, rule trace & preferences (e.g. male clinician, teleconsult) · confirm or override; reason required</small></div>
+  <div class="box"><b>Audit log</b><small>time · reviewer · engine version · suggested vs final · reason</small></div>
+  <div class="box"><b>Pilot integration (next)</b><small>Malaffi HIE referral (FHIR ServiceRequest) · DoH teleconsult providers · lab booking</small></div>
+</div>
+<div class="foot"><span><span class="tag">Vite + TypeScript</span><span class="tag">Web Crypto</span><span class="tag">Static on Vercel</span><span class="tag">0 servers holding health data</span></span><span>No ML model or LLM in clinical logic by design: every decision is reproducible and auditable.</span></div>
+</div></body></html>
